@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+#zczytanie wysokosci choinki i z ilu segmentow ma sie skladac
+
+k=0
+while k==0:
+	wysokosc=int(input("Podaj wysokosc choinki\n"))
+	ilesegmentow=int(input("Podaj liczbe segmentow, segmenty beda rowne\n"))
+	#sprawdzenie czy mozna taka choinke utworzyc
+	if wysokosc % ilesegmentow == 0 and wysokosc > 1 and ilesegmentow >= 1:
+		break
+	else:
+		print("Niestety nie mozna utworzyc takiej choinki\n")
+
+wysseg=wysokosc//ilesegmentow
+
+#narysowanie wszystkich segmentow
+for i in range(0,ilesegmentow):
+	
+	#narysowanie danego segmentu
+	for j in range(0,wysseg):
+		s=1
+		
+		#narysowanie pierwszej linii
+		if j == 0:
+			for l in range(0,wysseg-1):
+				print(" ",end='')
+			print("*")
+
+		#narysowanie kolejnych linii
+		elif j < wysseg-1:
+			for l in range(0,wysseg-j-1):
+				print(" ",end='')
+				s=s+1
+			print("*",end='')
+
+			#Narysowanie przerwy miedzy gwiazdkami
+			for l in range(0,j*2-1):
+				print(" ",end='')
+			print("*")
+		
+		#narysowanie ostatniej linii
+		else:
+			for l in range(0,wysseg*2-1):
+				print("*",end='')
+	print('')
